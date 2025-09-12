@@ -1,0 +1,6 @@
+data/debug_images/
+data/uploads/
+data/search_log.txt
+data/search_report.txt
+*.jpg
+__pycache__/
