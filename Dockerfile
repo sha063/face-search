@@ -3,8 +3,10 @@ FROM python:3.10-slim
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     libopencv-dev \
-    libatlas-base-dev \
+    libatlas3-base \
+    libopenblas-dev \
     gfortran \
+    g++ \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
@@ -16,9 +18,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy project files
 COPY . .
-
-# Copy data to persistent mount (will be overwritten by Render's disk)
-COPY data/ /app/data/
 
 # Expose port
 EXPOSE 5000
